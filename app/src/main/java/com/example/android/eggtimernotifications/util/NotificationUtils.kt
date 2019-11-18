@@ -98,12 +98,13 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             applicationContext.getString(R.string.snooze),
             snoozePendingIntent
         )
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     // COMPLETED: Step 2.1 add style to builder
 
-    // TODO: Step 2.3 add snooze action
+    // COMPLETED: Step 2.3 add snooze action
 
-    // TODO: Step 2.5 set priority
+    // COMPLETED: Step 2.5 set priority
 
     // COMPLETED: Step 1.4 call notify
     notify(NOTIFICATION_ID, builder.build())
