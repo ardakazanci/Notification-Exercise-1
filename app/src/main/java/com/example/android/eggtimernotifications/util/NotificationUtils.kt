@@ -66,7 +66,15 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .bigLargeIcon(null)
 
 
-    // TODO: Step 2.2 add snooze action
+    // COMPLETED: Step 2.2 add snooze action
+
+    val snoozeIntent = Intent(applicationContext, SnoozeReceiver::class.java)
+    val snoozePendingIntent: PendingIntent = PendingIntent.getBroadcast(
+        applicationContext,
+        REQUEST_CODE,
+        snoozeIntent,
+        FLAGS
+    )
 
     // COMPLETED: Step 1.2 get an instance of NotificationCompat.Builder
     // Build the notification
@@ -85,6 +93,11 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .setAutoCancel(true)
         .setStyle(bigPicStyle)
         .setLargeIcon(eggImage)
+        .addAction(
+            R.drawable.egg_icon,
+            applicationContext.getString(R.string.snooze),
+            snoozePendingIntent
+        )
 
     // COMPLETED: Step 2.1 add style to builder
 
