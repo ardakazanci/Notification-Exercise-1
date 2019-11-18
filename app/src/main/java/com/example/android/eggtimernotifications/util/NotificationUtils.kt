@@ -31,7 +31,7 @@ private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0
 private val FLAGS = 0
 
-// TODO: Step 1.1 extension function to send messages (GIVEN)
+// COMPLETED: Step 1.1 extension function to send messages (GIVEN)
 /**
  * Bildirimleri oluşturur ve iletir.
  *
@@ -54,7 +54,17 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         PendingIntent.FLAG_UPDATE_CURRENT
     )
 
-    // TODO: Step 2.0 add style
+    // COMPLETED: Step 2.0 add style
+
+    val eggImage = BitmapFactory.decodeResource(
+        applicationContext.resources,
+        R.drawable.cooked_egg
+    )
+
+    val bigPicStyle = NotificationCompat.BigPictureStyle()
+        .bigPicture(eggImage)
+        .bigLargeIcon(null)
+
 
     // TODO: Step 2.2 add snooze action
 
@@ -73,8 +83,10 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         // COMPLETED: Step 1.13 set content intent
         .setContentIntent(contentPendingIntent)
         .setAutoCancel(true)
+        .setStyle(bigPicStyle)
+        .setLargeIcon(eggImage)
 
-    // TODO: Step 2.1 add style to builder
+    // COMPLETED: Step 2.1 add style to builder
 
     // TODO: Step 2.3 add snooze action
 
